@@ -26,7 +26,7 @@ public class HealCommand implements CommandExecutor {
                             target.sendMessage(Main.getPrefix() + "§7Du wurdest von §5" + player.getName() + " §7geheilt!");
                             player.sendMessage(Main.getPrefix() + "§7Du hast den Spieler §5" + target.getName() + " §7geheilt.");
                         } else {
-                            player.sendMessage(Main.getPrefix() + "§7Der Spieler " + args[0] + "ist nicht online!");
+                            player.sendMessage(Main.getPrefix() + "§7Der Spieler " + args[0] + " ist nicht online!");
                         }
                     } else {
                         player.sendMessage(Main.getPrefix() + "§7Verwende§8: §5/heal §8<§7player§8>");
