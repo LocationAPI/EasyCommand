@@ -1,0 +1,12 @@
+name: EasyCommand
+version: '${project.version}'
+main: dev.locationapi.easycommand.Main
+api-version: 1.19
+authors: [ LocationAPI ]
+
+commands:
+  deop:
+  op:
+  fly:
+  feed:
+  heal:
