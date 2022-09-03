@@ -10,3 +10,5 @@ commands:
   fly:
   feed:
   heal:
+  gamemode:
+    aliases: [gm]  
