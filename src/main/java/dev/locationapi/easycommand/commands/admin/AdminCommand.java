@@ -1,72 +1,62 @@
 package dev.locationapi.easycommand.commands.admin;
 
-import dev.locationapi.easycommand.Main;
-import org.bukkit.Color;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-public class AdminCommand implements CommandExecutor {
+public class AdminhilfeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender instanceof Player) {
-            Player player = (Player) sender;
+        Player player = (Player) sender;
 
-            ItemStack adminhelmet = new ItemStack(Material.LEATHER_HELMET);
-            LeatherArmorMeta adminmeta = (LeatherArmorMeta) adminhelmet.getItemMeta();
-            adminmeta.setColor(Color.RED);
-            adminmeta.setDisplayName("§4Server-Admin");
-            adminhelmet.setItemMeta(adminmeta);
+        if(args.length == 0) {
+            HelpPage(player, 1);
 
-            ItemStack adminchest = new ItemStack(Material.LEATHER_CHESTPLATE);
-            LeatherArmorMeta adminnmeta = (LeatherArmorMeta) adminchest.getItemMeta();
-            adminnmeta.setColor(Color.RED);
-            adminnmeta.setDisplayName("§4Server-Admin");
-            adminchest.setItemMeta(adminnmeta);
+        } else if(args.length == 1) {
+            try {
+                int page = Integer.parseInt(args[0]);
+                HelpPage(player, page);
+            }catch (Exception e) {
 
-            ItemStack adminleg = new ItemStack(Material.LEATHER_LEGGINGS);
-            LeatherArmorMeta adminlegg = (LeatherArmorMeta) adminleg.getItemMeta();
-            adminlegg.setColor(Color.RED);
-            adminlegg.setDisplayName("§4Server-Admin");
-            adminleg.setItemMeta(adminlegg);
-
-            ItemStack adminboots = new ItemStack(Material.LEATHER_BOOTS);
-            LeatherArmorMeta adminboot = (LeatherArmorMeta) adminboots.getItemMeta();
-            adminboot.setColor(Color.RED);
-            adminboot.setDisplayName("§4Server-Admin");
-            adminboots.setItemMeta(adminboot);
-
-
-            if(player.hasPermission("easycommand.admin")) {
-                if(cmd.getName().equalsIgnoreCase("admin")) {
-                    if(args.length == 0) {
-
-                    } else if(args.length == 1) {
-                        if(args[0].equalsIgnoreCase("on")) {
-                            player.sendMessage(Main.getPrefix() + "Du bist nun als §cAdmin §7unterwegs!");
-                            player.setGameMode(GameMode.CREATIVE);
-                            player.getInventory().setHelmet(adminhelmet);
-                            player.getInventory().setChestplate(adminchest);
-                            player.getInventory().setLeggings(adminleg);
-                            player.getInventory().setBoots(adminboots);
-
-                        } else if(args[0].equalsIgnoreCase("off")) {
-                            player.sendMessage(Main.getPrefix() + "Du bist nun nicht mehr als §cAdmin §7unterwegs!");
-                            player.getInventory().clear();
-                            player.setGameMode(GameMode.SURVIVAL);
-                        }
-                    }
-                }
-            } else {
-                player.sendMessage(Main.getPrefix() + Main.getNoPermission());
             }
         }
+
         return false;
+    }
+
+    public static void HelpPage(Player player, int page) {
+        if(player.hasPermission("easycommand.adminhelp")) {
+            if(page == 1) {
+                player.sendMessage("§8─────────[ §5Admin§8-§5Hilfe §7Seite §d1 §8]─────────");
+                player.sendMessage("");
+                player.sendMessage("§8» §d/ad §8- §7Sende eine Broadcast");
+                player.sendMessage("§8» §d/ac §8- §7Schreibe im AdminChat mit allen Server-Admins");
+                player.sendMessage("§8» §d/admin §8<§7on§8|§7off§8>§8- §7Geh in den Adminmodus");
+                player.sendMessage("§8» §d/vanish §8- §7Mach dich unsichtbar um keinen zu Stören");
+                player.sendMessage("§8» §d/chatclear §8- §7Entleere den Chat");
+                player.sendMessage("§8» §d/day §8- §7Setze die Zeit auf Tag");
+                player.sendMessage("§8» §d/night §8- §7Setze die Zeit auf Nacht");
+                player.sendMessage("§8» §d/sun §8- §7Setze das Wetter auf Regen");
+                player.sendMessage("§8» §d/chatclear §8- §7Entleere den Chat");
+                player.sendMessage("");
+                player.sendMessage("§8─────────[ §5Admin§8-§5Hilfe §8]─────────");
+            } else if(page == 2) {
+                player.sendMessage("§8─────────[ §5Admin§8-§5Hilfe §7Seite §d2 §8]─────────");
+                player.sendMessage("");
+                player.sendMessage("§8» §d/op §8<§7player§8> §8- §7Setze einen Spieler zum Operator");
+                player.sendMessage("§8» §d/deop §8<§7player§8> §8- §7Nimm den Operator vom Spieler weg");
+                player.sendMessage("§8» §d/fly §8<§7player§8>§8- §7Setze dich oder einen Spieler in den Flugmodus");
+                player.sendMessage("§8» §d/gm §8<§70,1,2,3§8> §8<§7player§8> §8- §7Setze dich in den Gamemode");
+                player.sendMessage("§8» §d/feed §8<§7player§8> §8- §7Still deinen oder einem Spieler den Hunger");
+                player.sendMessage("§8» §d/heal §8<§7player§8> §8- §7Heil dein oder einem Spieler das Leben");
+                player.sendMessage("§8» §d/killall §8- §7Töte alle Tiere & Monster in der Umgebung");
+                player.sendMessage("§8» §d/tp §8<§7player§8> §8- §7Teleportiere dich zu einem Spieler");
+                player.sendMessage("§8» §d/spy §8- §7Überprüfe von anderen die Commands");
+                player.sendMessage("");
+                player.sendMessage("§8─────────[ §5Admin§8-§5Hilfe §8]─────────");
+            }
+        }
     }
 }
