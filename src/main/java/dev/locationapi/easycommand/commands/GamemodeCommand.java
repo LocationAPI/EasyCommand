@@ -58,7 +58,8 @@ public class GamemodeCommand implements CommandExecutor {
                                 player.sendMessage(Main.getPrefix() + "Du hast den Spieler §5" + target.getName() + " §7in den §5SPECATOR §7Modus gesetzt!");
                                 target.setGameMode(GameMode.SPECTATOR);
                             }
-                        }
+                        } else {
+                            player.sendMessage(Main.getPrefix() + "Der Spieler §5" + args[1] + " §7ist nicht online!");
                     }
                 } else {
                     player.sendMessage(Main.getPrefix() + "Verwende§8: §5/gamemode §8<§70,1,2,3§8>");
