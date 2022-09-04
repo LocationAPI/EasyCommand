@@ -18,7 +18,7 @@ public class DayCommand implements CommandExecutor {
             if(cmd.getName().equalsIgnoreCase("day")) {
                 World world = player.getWorld();
 
-                world.setTime(3000);
+                world.setTime(0);
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage(Main.getPrefix() + "Der Spieler §5" + player.getName() + " §7hat auf §5Tag §7gestellt");
             }
