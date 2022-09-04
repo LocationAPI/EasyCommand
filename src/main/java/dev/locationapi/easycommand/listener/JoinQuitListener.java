@@ -13,7 +13,7 @@ public class JoinQuitListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        event.setJoinMessage("§8[§a+§] §7" + player.getName());
+        //event.setJoinMessage("§8[§a+§] §7" + player.getName());
         Main.getInstance().getTablistManager().setTablist(player);
     }
 
@@ -21,6 +21,6 @@ public class JoinQuitListener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        event.setQuitMessage("§8[§c-§8] §7" + player.getName());
+        //event.setQuitMessage("§8[§c-§8] §7" + player.getName());
     }
 }
